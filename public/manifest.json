@@ -1,0 +1,19 @@
+{
+  "name": "HAYYIN - L'art prophétique d'être préservé du Feu",
+  "short_name": "HAYYIN",
+  "description": "Application spirituelle et pratique basée sur les 4 vertus prophétiques (Qarib, Hayyin, Layyin, Sahl).",
+  "start_url": "/hayyin/",
+  "scope": "/hayyin/",
+  "display": "standalone",
+  "background_color": "#064e3b",
+  "theme_color": "#064e3b",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/hayyin/vite.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
