@@ -3,6 +3,7 @@ import { Quote, Copy, Check, Sparkles, BookMarked, ChevronRight, CheckCircle, Bo
 import { HADITH_DATA, PILLARS, TAFSIR_SECTIONS, QUOTES } from '../data/tafsirData';
 import { shareContent, triggerHaptic } from '../utils/audio';
 import DailyChallengeCard from './DailyChallengeCard';
+import PortalsSection from './PortalsSection';
 
 export default function TafsirTab({
   dailyCompleted,
@@ -89,6 +90,9 @@ export default function TafsirTab({
           </div>
         </div>
       </div>
+
+      {/* L'INITIATION DES 4 PORTES DU CŒUR */}
+      <PortalsSection />
 
       {/* LE TAFSIR DÉTAILLÉ DU SHEIKH : INTERFACE DE MÉDITATION INTERACTIVE */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">

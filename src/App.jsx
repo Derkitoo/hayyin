@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import BottomNav from './components/BottomNav';
+import PwaInstallBanner from './components/PwaInstallBanner';
+import SanctuaryTab from './components/SanctuaryTab';
 import TafsirTab from './components/TafsirTab';
 import TrackerTab from './components/TrackerTab';
 import CalmTab from './components/CalmTab';
@@ -9,8 +12,8 @@ import BarakallahuModal from './components/BarakallahuModal';
 import { loadFromStorage, saveToStorage } from './utils/storage';
 
 export default function App() {
-  // Navigation
-  const [activeTab, setActiveTab] = useState('study');
+  // Navigation (par défaut sur le Sanctuaire de Paix)
+  const [activeTab, setActiveTab] = useState('sanctuary');
 
   // Paramètres audio et thème
   const [soundEnabled, setSoundEnabled] = useState(() => loadFromStorage('soundEnabled', true));
@@ -18,6 +21,19 @@ export default function App() {
 
   // Modal d'urgence Anti-Colère
   const [isBarakallahuOpen, setIsBarakallahuOpen] = useState(false);
+
+  // Rituels du Matin & du Soir
+  const todayKey = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
+  const [morningDone, setMorningDone] = useState(() => {
+    return loadFromStorage('morningDoneDate', null) === todayKey;
+  });
+  const [eveningDone, setEveningDone] = useState(() => {
+    return loadFromStorage('eveningDoneDate', null) === todayKey;
+  });
+
+  // Le Pacte Sacré (Mīthāq ar-Rifq)
+  const [hasSignedPact, setHasSignedPact] = useState(() => loadFromStorage('hasSignedPact', false));
+  const [pactDate, setPactDate] = useState(() => loadFromStorage('pactDate', ''));
 
   // Données du Baromètre / Auto-évaluation
   const [ratings, setRatings] = useState(() => loadFromStorage('ratings', {
@@ -50,7 +66,6 @@ export default function App() {
   const [tasbihCount, setTasbihCount] = useState(() => loadFromStorage('tasbihCount', 0));
 
   // Défi Douceur du Jour & Série (Streak)
-  const todayKey = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
   const [dailyCompleted, setDailyCompleted] = useState(() => {
     const lastDoneDate = loadFromStorage('dailyDoneDate', null);
     return lastDoneDate === todayKey;
@@ -84,6 +99,24 @@ export default function App() {
     saveToStorage('tasbihCount', tasbihCount);
   }, [tasbihCount]);
 
+  const handleCompleteMorning = () => {
+    setMorningDone(true);
+    saveToStorage('morningDoneDate', todayKey);
+  };
+
+  const handleCompleteEvening = () => {
+    setEveningDone(true);
+    saveToStorage('eveningDoneDate', todayKey);
+  };
+
+  const handleSignPact = () => {
+    const dateFormatted = new Date().toLocaleDateString('fr-FR');
+    setHasSignedPact(true);
+    setPactDate(dateFormatted);
+    saveToStorage('hasSignedPact', true);
+    saveToStorage('pactDate', dateFormatted);
+  };
+
   const handleToggleDailyChallenge = () => {
     if (!dailyCompleted) {
       setDailyCompleted(true);
@@ -103,7 +136,10 @@ export default function App() {
   return (
     <div className="min-h-screen bg-stone-50 dark:bg-stone-950 text-stone-800 dark:text-stone-100 flex flex-col font-sans selection:bg-emerald-100 selection:text-emerald-900 transition-colors antialiased">
       
-      {/* BARRE DE NAVIGATION SUPÉRIEURE */}
+      {/* BANNIÈRE D'INSTALLATION PWA MOBILE */}
+      <PwaInstallBanner />
+
+      {/* HEADER HAUTEUR MINIMALE */}
       <Header 
         activeTab={activeTab}
         setActiveTab={setActiveTab}
@@ -114,9 +150,23 @@ export default function App() {
         onOpenBarakallahu={() => setIsBarakallahuOpen(true)}
       />
 
-      {/* CONTENU PRINCIPAL */}
-      <main className="flex-1 max-w-5xl w-full mx-auto p-4 sm:p-6 space-y-6">
+      {/* CONTENU PRINCIPAL AVEC PADDING BAS POUR LE BOTTOM-NAV */}
+      <main className="flex-1 max-w-5xl w-full mx-auto p-3.5 sm:p-6 space-y-5 pb-24 md:pb-12">
         
+        {activeTab === 'sanctuary' && (
+          <SanctuaryTab 
+            morningDone={morningDone}
+            onCompleteMorning={handleCompleteMorning}
+            eveningDone={eveningDone}
+            onCompleteEvening={handleCompleteEvening}
+            hasSignedPact={hasSignedPact}
+            pactDate={pactDate}
+            onSignPact={handleSignPact}
+            onOpenBarakallahu={() => setIsBarakallahuOpen(true)}
+            soundEnabled={soundEnabled}
+          />
+        )}
+
         {activeTab === 'study' && (
           <TafsirTab 
             dailyCompleted={dailyCompleted}
@@ -155,6 +205,12 @@ export default function App() {
 
       {/* PIED DE PAGE */}
       <Footer />
+
+      {/* BARRE DE NAVIGATION INFÉRIEURE NATIVE SUR MOBILE */}
+      <BottomNav 
+        activeTab={activeTab}
+        setActiveTab={setActiveTab}
+      />
 
       {/* MODAL D'URGENCE SÉVÉRITÉ / ANTI-COLÈRE */}
       <BarakallahuModal 
