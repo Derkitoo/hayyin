@@ -1,7 +1,8 @@
-const CACHE_NAME = 'hayyin-v1';
+const CACHE_NAME = 'hayyin-v2';
 const ASSETS_TO_CACHE = [
   '/hayyin/',
   '/hayyin/index.html',
+  '/hayyin/logo.svg',
   '/hayyin/vite.svg',
   '/hayyin/manifest.json'
 ];
@@ -26,6 +27,7 @@ self.addEventListener('activate', (event) => {
   self.clients.claim();
 });
 
+// Cache first with network fallback
 self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET') return;
   event.respondWith(
@@ -43,6 +45,25 @@ self.addEventListener('fetch', (event) => {
         });
         return networkResponse;
       }).catch(() => caches.match('/hayyin/index.html'));
+    })
+  );
+});
+
+// Gestion du clic sur une notification
+self.addEventListener('notificationclick', (event) => {
+  event.notification.close();
+  const targetUrl = (event.notification.data && event.notification.data.url) || '/hayyin/';
+
+  event.waitUntil(
+    clients.matchAll({ type: 'window', includeUncontrolled: true }).then((clientList) => {
+      for (const client of clientList) {
+        if (client.url.includes('/hayyin/') && 'focus' in client) {
+          return client.focus();
+        }
+      }
+      if (clients.openWindow) {
+        return clients.openWindow(targetUrl);
+      }
     })
   );
 });
