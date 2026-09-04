@@ -12,7 +12,8 @@ import {
   Scroll, 
   Quote, 
   Flame,
-  Check
+  Check,
+  Bell
 } from 'lucide-react';
 import { MORNING_RITUAL, EVENING_RITUAL, MITHAQ_AR_RIFQ } from '../data/spiritualData';
 import { triggerHaptic, playHarmonicTone } from '../utils/audio';
@@ -27,6 +28,8 @@ export default function SanctuaryTab({
   pactDate,
   onSignPact,
   onOpenBarakallahu,
+  onOpenNotifications,
+  notifEnabled,
   soundEnabled
 }) {
   const [selectedDayTime, setSelectedDayTime] = useState('morning'); // 'morning' | 'day' | 'evening'
@@ -89,7 +92,7 @@ export default function SanctuaryTab({
             </p>
           </div>
 
-          {/* Bouton Bulle de Recueillement Sonore */}
+          {/* Bouton Bulle de Recueillement Sonore & Pacte */}
           <div className="shrink-0 flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5">
             <button
               onClick={toggleAmbience}
@@ -114,6 +117,44 @@ export default function SanctuaryTab({
             )}
           </div>
         </div>
+      </div>
+
+      {/* BANDEAU RAPPELS QUOTIDIENS ACTIFS */}
+      <div 
+        onClick={() => {
+          triggerHaptic(20);
+          onOpenNotifications();
+        }}
+        className="bg-white dark:bg-stone-900 p-4 rounded-3xl border border-stone-200 dark:border-stone-800 flex items-center justify-between gap-3 shadow-sm hover:border-amber-400/50 cursor-pointer transition-all active:scale-[0.99]"
+      >
+        <div className="flex items-center space-x-3">
+          <div className="w-9 h-9 rounded-2xl bg-amber-100 dark:bg-amber-950/80 text-amber-800 dark:text-amber-300 flex items-center justify-center font-bold shrink-0">
+            <Bell className="w-4 h-4" />
+          </div>
+          <div>
+            <div className="flex items-center space-x-2">
+              <span className="font-bold text-xs sm:text-sm text-stone-900 dark:text-stone-100">
+                Rappels Quotidiens de Paix & Douceur
+              </span>
+              <span className={`text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider ${
+                notifEnabled 
+                  ? 'bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300' 
+                  : 'bg-stone-100 dark:bg-stone-800 text-stone-500'
+              }`}>
+                {notifEnabled ? 'Activés (4 créneaux)' : 'Non configurés'}
+              </span>
+            </div>
+            <p className="text-[11px] text-stone-500 dark:text-stone-400">
+              {notifEnabled 
+                ? "Vous recevez les encouragements à l'Aube, au Midi, en Fin d'Après-Midi et au Crépuscule." 
+                : "Cliquez pour planifier vos 4 respirations bienveillantes tout au long de la journée."}
+            </p>
+          </div>
+        </div>
+
+        <button className="text-xs font-bold text-amber-800 dark:text-amber-300 shrink-0 underline">
+          Configurer
+        </button>
       </div>
 
       {/* LE RYTHME QUOTIDIEN EN 3 TEMPS : SÉLECTEUR INTERACTIF */}

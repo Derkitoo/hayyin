@@ -9,7 +9,14 @@ import TrackerTab from './components/TrackerTab';
 import CalmTab from './components/CalmTab';
 import ScenariosTab from './components/ScenariosTab';
 import BarakallahuModal from './components/BarakallahuModal';
+import NotificationSettingsModal from './components/NotificationSettingsModal';
+import NotificationToast from './components/NotificationToast';
 import { loadFromStorage, saveToStorage } from './utils/storage';
+import { NOTIFICATION_SLOTS } from './data/notificationsData';
+import { 
+  getStoredNotifConfig, 
+  startNotificationScheduler 
+} from './utils/notifications';
 
 export default function App() {
   // Navigation (par défaut sur le Sanctuaire de Paix)
@@ -19,8 +26,13 @@ export default function App() {
   const [soundEnabled, setSoundEnabled] = useState(() => loadFromStorage('soundEnabled', true));
   const [darkMode, setDarkMode] = useState(() => loadFromStorage('darkMode', false));
 
-  // Modal d'urgence Anti-Colère
+  // Modals
   const [isBarakallahuOpen, setIsBarakallahuOpen] = useState(false);
+  const [isNotifModalOpen, setIsNotifModalOpen] = useState(false);
+
+  // Notifications & Toast
+  const [notifConfig, setNotifConfig] = useState(getStoredNotifConfig);
+  const [currentToast, setCurrentToast] = useState(null);
 
   // Rituels du Matin & du Soir
   const todayKey = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
@@ -99,6 +111,22 @@ export default function App() {
     saveToStorage('tasbihCount', tasbihCount);
   }, [tasbihCount]);
 
+  // Démarrage du planificateur de notifications
+  useEffect(() => {
+    const cancelScheduler = startNotificationScheduler(
+      NOTIFICATION_SLOTS,
+      notifConfig,
+      (slot) => {
+        setCurrentToast({
+          title: slot.title,
+          body: slot.body,
+          tab: slot.tab,
+        });
+      }
+    );
+    return () => cancelScheduler();
+  }, [notifConfig]);
+
   const handleCompleteMorning = () => {
     setMorningDone(true);
     saveToStorage('morningDoneDate', todayKey);
@@ -136,6 +164,13 @@ export default function App() {
   return (
     <div className="min-h-screen bg-stone-50 dark:bg-stone-950 text-stone-800 dark:text-stone-100 flex flex-col font-sans selection:bg-emerald-100 selection:text-emerald-900 transition-colors antialiased">
       
+      {/* TOAST FLOTTANT IN-APP LORS D'UN RAPPEL */}
+      <NotificationToast 
+        toast={currentToast}
+        onDismiss={() => setCurrentToast(null)}
+        onNavigate={(tab) => setActiveTab(tab)}
+      />
+
       {/* BANNIÈRE D'INSTALLATION PWA MOBILE */}
       <PwaInstallBanner />
 
@@ -148,6 +183,8 @@ export default function App() {
         darkMode={darkMode}
         setDarkMode={setDarkMode}
         onOpenBarakallahu={() => setIsBarakallahuOpen(true)}
+        onOpenNotifications={() => setIsNotifModalOpen(true)}
+        notifEnabled={notifConfig.enabled}
       />
 
       {/* CONTENU PRINCIPAL AVEC PADDING BAS POUR LE BOTTOM-NAV */}
@@ -163,6 +200,8 @@ export default function App() {
             pactDate={pactDate}
             onSignPact={handleSignPact}
             onOpenBarakallahu={() => setIsBarakallahuOpen(true)}
+            onOpenNotifications={() => setIsNotifModalOpen(true)}
+            notifEnabled={notifConfig.enabled}
             soundEnabled={soundEnabled}
           />
         )}
@@ -216,6 +255,16 @@ export default function App() {
       <BarakallahuModal 
         isOpen={isBarakallahuOpen}
         onClose={() => setIsBarakallahuOpen(false)}
+        soundEnabled={soundEnabled}
+      />
+
+      {/* MODAL DE RÉGLAGES DES NOTIFICATIONS */}
+      <NotificationSettingsModal 
+        isOpen={isNotifModalOpen}
+        onClose={() => setIsNotifModalOpen(false)}
+        notifConfig={notifConfig}
+        setNotifConfig={setNotifConfig}
+        onTestToast={(payload) => setCurrentToast(payload)}
         soundEnabled={soundEnabled}
       />
 

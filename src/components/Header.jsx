@@ -10,7 +10,8 @@ import {
   Sparkles, 
   Heart, 
   Compass, 
-  Feather 
+  Feather,
+  Bell
 } from 'lucide-react';
 import { triggerHaptic } from '../utils/audio';
 
@@ -21,7 +22,9 @@ export default function Header({
   setSoundEnabled,
   darkMode,
   setDarkMode,
-  onOpenBarakallahu
+  onOpenBarakallahu,
+  onOpenNotifications,
+  notifEnabled
 }) {
   return (
     <header className="bg-gradient-to-r from-emerald-950 via-emerald-900 to-teal-950 dark:from-stone-950 dark:via-emerald-950 dark:to-stone-950 text-white shadow-md sticky top-0 z-40 border-b border-emerald-800/70 dark:border-emerald-900/50 transition-colors pt-[env(safe-area-inset-top,0px)]">
@@ -39,14 +42,31 @@ export default function Header({
               <span className="font-extrabold text-base sm:text-lg tracking-tight">HAYYIN</span>
               <span className="font-serif text-amber-300 text-sm font-bold dir-rtl">هَيِّن</span>
             </div>
-            <p className="text-[10px] sm:text-[11px] text-emerald-300/90 truncate max-w-[160px] sm:max-w-none leading-none">
+            <p className="text-[10px] sm:text-[11px] text-emerald-300/90 truncate max-w-[150px] sm:max-w-none leading-none">
               Préservé du Feu
             </p>
           </div>
         </div>
 
         {/* Actions rapides */}
-        <div className="flex items-center space-x-1.5 sm:space-x-2">
+        <div className="flex items-center space-x-1 sm:space-x-1.5">
+          
+          {/* Bouton Rappels Quotidiens (Cloche) */}
+          <button
+            onClick={() => {
+              triggerHaptic(20);
+              onOpenNotifications();
+            }}
+            title="Configurer les rappels de paix"
+            className="p-1.5 sm:p-2 rounded-xl bg-emerald-800/50 hover:bg-emerald-800 text-emerald-200 border border-emerald-700/50 transition-colors active:scale-95 relative"
+            aria-label="Rappels quotidiens"
+          >
+            <Bell className="w-4 h-4" />
+            {notifEnabled && (
+              <span className="absolute top-1 right-1 w-2 h-2 bg-amber-400 rounded-full shadow-sm shadow-amber-400/80 animate-pulse" />
+            )}
+          </button>
+
           {/* Bouton d'urgence Anti-Colère Barakallahu Feek */}
           <button
             onClick={() => {
