@@ -4,6 +4,7 @@ import { HADITH_DATA, PILLARS, TAFSIR_SECTIONS, QUOTES } from '../data/tafsirDat
 import { shareContent, triggerHaptic } from '../utils/audio';
 import DailyChallengeCard from './DailyChallengeCard';
 import PortalsSection from './PortalsSection';
+import RifqAnthologySection from './RifqAnthologySection';
 
 export default function TafsirTab({
   dailyCompleted,
@@ -41,7 +42,7 @@ export default function TafsirTab({
         soundEnabled={soundEnabled}
       />
 
-      {/* Bannière du Hadith */}
+      {/* Bannière du Hadith Principal */}
       <div className="bg-white dark:bg-stone-900 rounded-3xl shadow-sm border border-stone-200/90 dark:border-stone-800 p-6 sm:p-8 relative overflow-hidden transition-colors">
         <div className="absolute right-0 top-0 translate-x-8 -translate-y-8 opacity-5 dark:opacity-10 pointer-events-none">
           <Quote className="w-64 h-64 text-emerald-900 dark:text-emerald-400" />
@@ -90,6 +91,9 @@ export default function TafsirTab({
           </div>
         </div>
       </div>
+
+      {/* L'ANTHOLOGIE COMPLÈTE DU RIFQ (10 HADITHS AUTHENTIQUES) */}
+      <RifqAnthologySection />
 
       {/* L'INITIATION DES 4 PORTES DU CŒUR */}
       <PortalsSection />
