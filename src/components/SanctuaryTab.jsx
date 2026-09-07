@@ -18,6 +18,7 @@ import {
 import { MORNING_RITUAL, EVENING_RITUAL, MITHAQ_AR_RIFQ } from '../data/spiritualData';
 import { triggerHaptic, playHarmonicTone } from '../utils/audio';
 import { startAmbience, stopAmbience, getIsAmbiencePlaying } from '../utils/soundAmbience';
+import RifqDashboard from './RifqDashboard';
 
 export default function SanctuaryTab({
   morningDone,
@@ -118,6 +119,11 @@ export default function SanctuaryTab({
           </div>
         </div>
       </div>
+
+      {/* ========================================================= */}
+      {/* NOUVEAU DASHBOARD : HADITH DU JOUR & DEGRÉ DU RIFQ        */}
+      {/* ========================================================= */}
+      <RifqDashboard soundEnabled={soundEnabled} />
 
       {/* BANDEAU RAPPELS QUOTIDIENS ACTIFS */}
       <div 

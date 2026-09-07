@@ -3,49 +3,53 @@ export const HADITH_DATA = {
   quoteFr: "« Ne vous informerai-je point de celui qui est interdit au Feu, ou de celui envers qui le Feu est interdit ? Il est interdit à quiconque est proche (accessible), posé (digne), doux (bienveillant) et facile (conciliant). »",
   source: "Hadith Prophétique Authentique • Sunan At-Tirmidhî (n° 2488, Hassan)",
   narrator: "Ibn Mas'ûd (رضي الله عنه)",
-  mainTakeaway: "Être préservé du Feu est un rang supérieur à la simple admission au Paradis. Certains musulmans entrent au Paradis après une expiation préliminaire au Feu, mais celui qui concrétise ces quatre qualités relationnelles en est totalement exempté : le Feu lui est formellement interdit."
+  mainTakeaway: "Être préservé du Feu est un rang supérieur à la simple admission au Paradis. Certains croyants entrent au Paradis après une expiation préliminaire au Feu, mais celui qui concrétise ces quatre vertus relationnelles en est totalement exempté : le Feu lui est formellement interdit."
 };
 
 export const PILLARS = [
   {
     id: 'qarib',
     nameAr: 'قَرِيب',
-    nameFr: 'Qarîb (Accessible & Proche)',
-    subtitle: 'La chaleur humaine et la promptitude au bien',
-    badge: 'Le Rapprochement',
-    color: 'emerald',
-    desc: "Être proche d'Allah par Son obéissance, et proche des créatures par un abord chaleureux, souriant et accessible. Le croyant attire les cœurs par sa bonté, tandis que la froideur et la morgue font fuir jusqu'aux êtres les plus chers, y compris ses propres enfants.",
-    action: "Prendre des nouvelles sincères, écouter sans interrompre, accueillir autrui avec un visage radieux."
+    nameFr: 'Qarîb (Proche & Accessible)',
+    subtitle: 'L\'Aimant des cœurs par l\'humilité et la chaleur d\'accès',
+    badge: 'La Proximité',
+    linguistic: "Dans la langue arabe, 'Al-Qurb' désigne l'opposé de l'éloignement. Ici, le Prophète ﷺ n'a pas précisé 'proche de quoi', ce qui englobe deux dimensions fondamentales : proche d'Allah par Son obéissance, et proche des gens par la chaleur, la disponibilité et le noble caractère.",
+    manifestation: "Accueillir quiconque vient à vous avec un visage épanoui, ne pas faire sentir à autrui une barrière hiérarchique ou sociale, être prompt à écouter sans s'impatienter.",
+    sinAvoided: "La morgue, l'inaccessibilité, la froideur qui repousse jusqu'aux êtres les plus chers (enfants, conjoint, proches).",
+    action: "Offrir un accueil sincère, regarder son interlocuteur dans les yeux, prendre l'initiative du salam avec chaleur."
   },
   {
     id: 'hayyin',
     nameAr: 'هَيِّن',
     nameFr: 'Hayyin (Posé & Paisible)',
-    subtitle: 'La dignité tranquille, exempte de vanité',
+    subtitle: 'La dignité silencieuse, exempte de vanité et d\'agitation',
     badge: 'La Sérénité',
-    color: 'teal',
-    desc: "Une âme tempérée, modeste et calme face aux aléas de la vie. Elle n'est ni vaniteuse, ni querelleuse, et refuse d'écraser autrui par son orgueil ou ses réactions impulsives.",
-    action: "Garder son calme dans la foule ou les contrariétés, refuser les joutes oratoires stériles."
+    linguistic: "Dérivé de 'Al-Hawun' qui désigne le calme, la retenue et la modération. Le serviteur 'Hayyin' est habité par la sakīnah (sérénité) : il ne s'emporte pas au premier mot, ne cherche pas le spectacle et ne surréagit pas aux contrariétés.",
+    manifestation: "Une démarche humble sans orgueil, un ton posé, un refus absolu de participer aux joutes oratoires stériles ou de chercher à humilier son contradicteur.",
+    sinAvoided: "La susceptibilité excessive, l'arrogance théâtrale, le besoin de domination et l'impulsivité vengeresse.",
+    action: "Garder son calme dans la foule et le trafic, laisser passer une provocation sans répliquer avec venin."
   },
   {
     id: 'layyin',
     nameAr: 'لَيِّن',
     nameFr: 'Layyin (Doux & Tactful)',
-    subtitle: 'La délicatesse du verbe et du conseil',
-    badge: 'La Bienveillance',
-    color: 'amber',
-    desc: "Des propos doux, courtois, dépourvus de sarcasme ou de violence verbale. Lorsqu'il conseille une personne dans l'erreur, il le fait avec compassion et discrétion pour lui faire aimer le bien.",
-    action: "Bannir les mots blessants lors d'un reproche ; conseiller en tête-à-tête avec tendresse."
+    subtitle: 'La délicatesse du verbe et la bienveillance du conseil',
+    badge: 'La Délicatesse',
+    linguistic: "Le terme 'Al-Līn' est l'antithèse absolue de la rudesse ('Al-Ghildhah') et de la dureté de cœur ('Al-Fazāzah'). C'est la flexibilité bienveillante dans les propos et les manières.",
+    manifestation: "L'art de choisir les mots les plus doux, surtout lors d'un rappel ou d'un désaccord. Comme l'a ordonné Allah à Moïse face à Pharaon : 'Parlez-lui d'une parole douce (Qawlan Layyinā)'.",
+    sinAvoided: "Le sarcasme, l'ironie blessante, les piques assassines et le reproche public qui ferme le cœur d'autrui au bien.",
+    action: "Bannir les mots coupants lors d'un reproche ; conseiller toujours en aparté avec affection et pudeur."
   },
   {
     id: 'sahl',
     nameAr: 'سَهْل',
     nameFr: 'Sahl (Facile & Conciliant)',
-    subtitle: 'La souplesse et la clémence relationnelle',
-    badge: 'La Flexibilité',
-    color: 'sky',
-    desc: "Facile à vivre, indulgent dans les transactions (achats, ventes, règlements), accommodant face aux imprévus. C'est une personne qui fluidifie le quotidien au lieu de le complexifier.",
-    action: "Renoncer à avoir le dernier mot sur une broutille ; accorder un délai ou pardonner une maladresse."
+    subtitle: 'La souplesse dans le droit, la clémence et le compromis',
+    badge: 'La Facilité',
+    linguistic: "Contraire de 'Al-Hazn' (le terrain rocailleux et impraticable). La personne 'Sahl' est comme une plaine fertile et dégagée : elle ne complique rien, ne dresse aucun obstacle et pardonne aisément.",
+    manifestation: "Être coulant dans les transactions matérielles, accorder un répit à un débiteur, renoncer à chipoter sur un détail financier ou un retard involontaire.",
+    sinAvoided: "La rigidité mentale, la rancune procédurière, l'acharnement sur son droit strict sans miséricorde.",
+    action: "Renoncer volontairement à avoir le dernier mot sur une broutille ; accorder un délai ou effacer une petite dette."
   }
 ];
 
@@ -65,7 +69,7 @@ export const TAFSIR_SECTIONS = [
     title: "L'Interdiction Absolue au Feu (تحرم عليه النار)",
     quoteAr: "« قَدْرٌ زَائِدٌ عَلَى مُجَرَّدِ دُخُولِ الْجَنَّةِ »",
     summary: "Une distinction spirituelle majeure entre entrer au Paradis après une purification, et être totalement préservé de l'Enfer.",
-    explanation: "Le Pr. Al-Badr insiste sur un point fondamental : certains croyants pécheurs finissent par entrer au Paradis mais après avoir été touchés et purifiés par le Feu. En revanche, pour la personne 'proche, posée, douce et facile', le Feu lui est formellement interdit (La tamassouhu an-Nâr). C'est un degré d'honneur suprême.",
+    explanation: "Le Pr. Al-Badr insiste sur un point fondamental : certains croyants finissent par entrer au Paradis mais après avoir été touchés et purifiés par le Feu. En revanche, pour la personne 'proche, posée, douce et facile', le Feu lui est formellement interdit (La tamassouhu an-Nâr). C'est un degré d'honneur suprême.",
     takeaway: "Le noble caractère procure une immunité complète contre les tourments du Feu."
   },
   {
