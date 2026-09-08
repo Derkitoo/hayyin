@@ -11,14 +11,15 @@ import {
   VolumeX, 
   Scroll, 
   Quote, 
-  Flame,
-  Check,
-  Bell
+  Flame, 
+  Check, 
+  Bell 
 } from 'lucide-react';
 import { MORNING_RITUAL, EVENING_RITUAL, MITHAQ_AR_RIFQ } from '../data/spiritualData';
 import { triggerHaptic, playHarmonicTone } from '../utils/audio';
 import { startAmbience, stopAmbience, getIsAmbiencePlaying } from '../utils/soundAmbience';
 import RifqDashboard from './RifqDashboard';
+import BehaviorTransformationSection from './BehaviorTransformationSection';
 
 export default function SanctuaryTab({
   morningDone,
@@ -121,9 +122,14 @@ export default function SanctuaryTab({
       </div>
 
       {/* ========================================================= */}
-      {/* NOUVEAU DASHBOARD : HADITH DU JOUR & DEGRÉ DU RIFQ        */}
+      {/* 1. DASHBOARD QUOTIDIEN DU RIFQ                            */}
       {/* ========================================================= */}
       <RifqDashboard soundEnabled={soundEnabled} />
+
+      {/* ========================================================= */}
+      {/* 2. MOTEUR DE CHANGEMENT COMPORTEMENTAL (SIL'AT ALLAH)      */}
+      {/* ========================================================= */}
+      <BehaviorTransformationSection soundEnabled={soundEnabled} />
 
       {/* BANDEAU RAPPELS QUOTIDIENS ACTIFS */}
       <div 
