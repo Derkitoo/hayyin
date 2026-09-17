@@ -53,13 +53,13 @@ export default function PwaInstallBanner() {
   if (!deferredPrompt && !isIos) return null;
 
   return (
-    <div className="bg-gradient-to-r from-emerald-900 to-teal-900 text-white px-4 py-3 border-b border-emerald-700/50 shadow-md relative animate-fadeIn text-xs">
+    <div className="bg-[#EDE8DE] dark:bg-[#19201D] text-[#1E3A2B] dark:text-[#EAE6DF] px-4 py-2.5 border-b border-[#DFD8CB]/80 dark:border-[#25302A] shadow-sm relative animate-fadeIn text-xs">
       <div className="max-w-5xl mx-auto flex items-center justify-between gap-3">
         <div className="flex items-center space-x-3">
-          <img src="/hayyin/logo.svg" alt="HAYYIN" className="w-9 h-9 rounded-xl shadow-sm shrink-0" />
+          <img src="/hayyin/logo.svg" alt="HAYYIN" className="w-8 h-8 rounded-full border border-[#DFD8CB] dark:border-[#2A3830] shrink-0" />
           <div className="leading-tight">
-            <p className="font-bold text-amber-200">Installer HAYYIN sur votre téléphone</p>
-            <p className="text-[11px] text-emerald-200/90">
+            <p className="font-serif font-bold text-[#1E3A2B] dark:text-[#EAE6DF]">Installer HAYYIN sur votre téléphone</p>
+            <p className="text-[11px] text-[#827869] dark:text-[#8E9B93]">
               {isIos ? "Touchez Partager ⎋ puis 'Sur l'écran d'accueil' ＋" : "Accès instantané 100% hors-ligne en 1 clic"}
             </p>
           </div>
@@ -69,7 +69,7 @@ export default function PwaInstallBanner() {
           {!isIos && deferredPrompt && (
             <button
               onClick={handleInstallClick}
-              className="bg-amber-400 hover:bg-amber-300 text-stone-950 font-extrabold px-3 py-1.5 rounded-xl text-[11px] uppercase tracking-wider shadow-sm active:scale-95 transition-all flex items-center space-x-1"
+              className="bg-[#1E3A2B] hover:bg-[#2A4C3A] dark:bg-[#B89B72] dark:hover:bg-[#C4A97D] text-[#F5F2EB] dark:text-[#111614] font-bold px-3.5 py-1.5 rounded-full text-[11px] uppercase tracking-wider shadow-sm active:scale-95 transition-all flex items-center space-x-1 cursor-pointer"
             >
               <Download className="w-3.5 h-3.5" />
               <span>Installer</span>
@@ -78,7 +78,7 @@ export default function PwaInstallBanner() {
 
           <button
             onClick={handleDismiss}
-            className="p-1 rounded-lg text-emerald-300 hover:text-white"
+            className="p-1.5 rounded-full hover:bg-[#DFD8CB]/60 dark:hover:bg-[#25302A] text-[#827869] dark:text-[#8E9B93] transition-colors"
             aria-label="Fermer la bannière"
           >
             <X className="w-4 h-4" />

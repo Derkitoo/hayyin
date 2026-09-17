@@ -45,41 +45,41 @@ export default function RifqAnthologySection() {
   };
 
   return (
-    <div className="bg-white dark:bg-stone-900 rounded-3xl border border-stone-200 dark:border-stone-800 p-5 sm:p-7 shadow-sm space-y-5 transition-colors">
+    <div className="bg-[#EDE8DE] dark:bg-[#19201D] rounded-[36px] border border-[#DFD8CB] dark:border-[#25302A] p-6 sm:p-8 shadow-[0_12px_40px_rgba(0,0,0,0.03)] space-y-6 transition-colors">
       
       {/* En-tête de la section */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-stone-100 dark:border-stone-800 pb-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#DFD8CB]/80 dark:border-[#25302A] pb-5">
         <div>
           <div className="flex items-center space-x-2">
-            <span className="text-[10px] uppercase font-bold text-amber-800 dark:text-amber-300 tracking-wider bg-amber-100 dark:bg-amber-950/80 px-2.5 py-0.5 rounded-full border border-amber-300 dark:border-amber-700">
+            <span className="text-[10px] uppercase font-bold text-[#B89B72] dark:text-[#C4A97D] tracking-widest bg-[#F5F2EB] dark:bg-[#151B18] px-3 py-1 rounded-full border border-[#DFD8CB] dark:border-[#2A3830]">
               Anthologie Prophétique • كُنُوزُ الرِّفْقِ
             </span>
-            <span className="text-xs text-stone-400 font-mono">
+            <span className="text-xs text-[#827869] dark:text-[#8E9B93] font-mono">
               {filteredHadiths.length} hadith{filteredHadiths.length > 1 ? 's' : ''}
             </span>
           </div>
-          <h2 className="text-lg sm:text-xl font-bold text-stone-900 dark:text-stone-100 mt-1">
+          <h2 className="text-xl sm:text-2xl font-serif text-[#1E3A2B] dark:text-[#EAE6DF] mt-2">
             Le Trésor du Rifq : Les 10 Hadiths de la Douceur
           </h2>
-          <p className="text-xs text-stone-500 dark:text-stone-400">
-            Le corpus prophétique complet pour blinder votre caractère et repousser le Feu
+          <p className="text-xs text-[#827869] dark:text-[#8E9B93] mt-0.5">
+            Le corpus prophétique complet pour polir votre caractère et repousser le Feu
           </p>
         </div>
 
         {/* Barre de recherche instantanée */}
         <div className="relative w-full sm:w-64">
-          <Search className="w-4 h-4 text-stone-400 absolute left-3 top-1/2 -translate-y-1/2" />
+          <Search className="w-4 h-4 text-[#827869] absolute left-3 top-1/2 -translate-y-1/2" />
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Rechercher (colère, foyer, paix...)"
-            className="w-full pl-9 pr-8 py-2 bg-stone-50 dark:bg-stone-800/80 border border-stone-200 dark:border-stone-700 rounded-2xl text-xs text-stone-800 dark:text-stone-100 focus:outline-none focus:ring-2 focus:ring-emerald-700 dark:focus:ring-amber-400"
+            className="w-full pl-9 pr-8 py-2.5 bg-[#F5F2EB] dark:bg-[#151B18] border border-[#DFD8CB] dark:border-[#2A3830] rounded-full text-xs text-[#1E3A2B] dark:text-[#EAE6DF] placeholder-[#A39989] focus:outline-none focus:ring-2 focus:ring-[#B89B72]/40"
           />
           {searchQuery && (
             <button
               onClick={() => setSearchQuery('')}
-              className="absolute right-2.5 top-1/2 -translate-y-1/2 text-stone-400 hover:text-stone-600"
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-[#827869] hover:text-[#1E3A2B] dark:hover:text-white"
             >
               <X className="w-3.5 h-3.5" />
             </button>
@@ -88,7 +88,7 @@ export default function RifqAnthologySection() {
       </div>
 
       {/* Barre de filtres par catégories */}
-      <div className="flex space-x-1.5 overflow-x-auto pb-1 scrollbar-none">
+      <div className="flex space-x-2 overflow-x-auto pb-1 scrollbar-none">
         {RIFQ_CATEGORIES.map((cat) => {
           const isSelected = selectedCategory === cat.id;
           return (
@@ -98,10 +98,10 @@ export default function RifqAnthologySection() {
                 triggerHaptic(20);
                 setSelectedCategory(cat.id);
               }}
-              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap ${
+              className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-all whitespace-nowrap ${
                 isSelected
-                  ? 'bg-emerald-800 dark:bg-amber-400 text-white dark:text-stone-950 shadow-sm'
-                  : 'bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-300 hover:bg-stone-200 dark:hover:bg-stone-700'
+                  ? 'bg-[#1E3A2B] dark:bg-[#B89B72] text-[#F5F2EB] dark:text-[#111614] shadow-sm'
+                  : 'bg-[#F5F2EB] dark:bg-[#151B18] text-[#827869] dark:text-[#8E9B93] border border-[#DFD8CB]/80 dark:border-[#25302A] hover:border-[#B89B72]'
               }`}
             >
               {cat.label}
@@ -112,7 +112,7 @@ export default function RifqAnthologySection() {
 
       {/* Liste des Hadiths */}
       {filteredHadiths.length === 0 ? (
-        <div className="text-center py-8 text-xs text-stone-400 dark:text-stone-500 italic">
+        <div className="text-center py-10 text-xs text-[#827869] dark:text-[#8E9B93] italic">
           Aucun hadith ne correspond à votre recherche. Essayez un autre mot-clé.
         </div>
       ) : (
@@ -122,51 +122,51 @@ export default function RifqAnthologySection() {
             return (
               <div 
                 key={h.id}
-                className="bg-stone-50/70 dark:bg-stone-800/40 rounded-2xl border border-stone-200/80 dark:border-stone-800 p-5 space-y-3.5 transition-all hover:border-amber-400/50"
+                className="bg-[#F5F2EB] dark:bg-[#151B18] rounded-[28px] border border-[#DFD8CB]/80 dark:border-[#25302A] p-5 sm:p-6 space-y-4 transition-all hover:border-[#B89B72]/60"
               >
                 {/* En-tête de carte */}
-                <div className="flex flex-wrap items-center justify-between gap-2 border-b border-stone-100 dark:border-stone-700/60 pb-2.5">
+                <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#DFD8CB]/60 dark:border-[#25302A] pb-3">
                   <div className="flex items-center space-x-2">
-                    <span className="text-[10px] uppercase font-bold text-emerald-900 dark:text-emerald-300 bg-emerald-100 dark:bg-emerald-950 px-2 py-0.5 rounded-md border border-emerald-300 dark:border-emerald-800">
+                    <span className="text-[10px] uppercase font-bold text-[#1E3A2B] dark:text-[#A7D1BA] bg-[#EDE8DE] dark:bg-[#1E2723] px-2.5 py-0.5 rounded-full border border-[#DFD8CB] dark:border-[#2A3830]">
                       {h.categoryLabel}
                     </span>
-                    <span className="text-xs text-stone-500 dark:text-stone-400 font-medium">
+                    <span className="text-xs text-[#827869] dark:text-[#8E9B93] font-medium">
                       {h.narrator}
                     </span>
                   </div>
 
                   <div className="flex items-center space-x-2">
-                    <span className="text-[10px] text-stone-400 font-mono">
+                    <span className="text-[10px] text-[#A39989] dark:text-[#6E7B74] font-mono">
                       {h.source}
                     </span>
                     <button
                       onClick={() => handleShareHadith(h)}
-                      className="p-1.5 rounded-lg bg-white dark:bg-stone-800 text-stone-500 hover:text-emerald-800 dark:hover:text-amber-300 border border-stone-200 dark:border-stone-700 transition-colors active:scale-90"
+                      className="p-1.5 rounded-full bg-[#EDE8DE] dark:bg-[#1E2723] text-[#827869] dark:text-[#8E9B93] hover:text-[#1E3A2B] dark:hover:text-[#EAE6DF] border border-[#DFD8CB] dark:border-[#2A3830] transition-colors active:scale-90"
                       title="Partager ce hadith"
                     >
-                      {isCopied ? <Check className="w-3.5 h-3.5 text-emerald-600 dark:text-amber-400" /> : <Share2 className="w-3.5 h-3.5" />}
+                      {isCopied ? <Check className="w-3.5 h-3.5 text-[#1E3A2B] dark:text-[#B89B72]" /> : <Share2 className="w-3.5 h-3.5" />}
                     </button>
                   </div>
                 </div>
 
                 {/* Calligraphie arabe */}
-                <div className="bg-white dark:bg-stone-900 p-4 rounded-xl border border-stone-200 dark:border-stone-800 text-center">
-                  <p className="font-serif text-lg sm:text-xl text-emerald-950 dark:text-amber-300 leading-relaxed dir-rtl" style={{ fontFamily: 'Amiri, serif' }}>
+                <div className="bg-[#EDE8DE]/70 dark:bg-[#19201D] p-5 rounded-2xl border border-[#DFD8CB]/70 dark:border-[#25302A] text-center">
+                  <p className="font-serif text-xl sm:text-2xl text-[#1E3A2B] dark:text-[#A7D1BA] leading-relaxed dir-rtl" style={{ fontFamily: 'Amiri, serif' }}>
                     {h.quoteAr}
                   </p>
                 </div>
 
                 {/* Traduction française */}
-                <p className="text-stone-700 dark:text-stone-200 text-xs sm:text-sm leading-relaxed font-normal italic">
-                  {h.quoteFr}
+                <p className="text-[#3F4843] dark:text-[#C5D8CD] text-xs sm:text-sm leading-relaxed font-normal italic px-1">
+                  « {h.quoteFr} »
                 </p>
 
                 {/* Clé de mise en pratique */}
-                <div className="p-3 bg-emerald-50/70 dark:bg-emerald-950/40 rounded-xl border border-emerald-200/80 dark:border-emerald-900/50 text-xs text-emerald-950 dark:text-emerald-200 flex items-start space-x-2">
-                  <Feather className="w-4 h-4 text-emerald-700 dark:text-emerald-400 shrink-0 mt-0.5" />
+                <div className="p-3.5 bg-[#EDE8DE]/60 dark:bg-[#19201D] rounded-2xl border border-[#DFD8CB]/60 dark:border-[#25302A] text-xs text-[#1E3A2B] dark:text-[#EAE6DF] flex items-start space-x-2.5">
+                  <Feather className="w-4 h-4 text-[#B89B72] dark:text-[#C4A97D] shrink-0 mt-0.5" />
                   <div>
-                    <strong className="text-emerald-900 dark:text-emerald-300 font-semibold">Clé pour ta journée : </strong>
-                    <span>{h.keyTakeaway}</span>
+                    <strong className="text-[#1E3A2B] dark:text-[#B89B72] font-semibold">Clé pour ta journée : </strong>
+                    <span className="text-[#55635C] dark:text-[#A7B5AD]">{h.keyTakeaway}</span>
                   </div>
                 </div>
               </div>

@@ -118,24 +118,24 @@ export default function TrackerTab({
     <div className="space-y-6">
       
       {/* RÉSUMÉ DE L'ALIGNEMENT & SCORE D'IMMUNITÉ */}
-      <div className="bg-gradient-to-br from-emerald-950 via-emerald-900 to-teal-950 dark:from-stone-950 dark:via-emerald-950 dark:to-stone-950 text-white rounded-3xl p-6 sm:p-8 shadow-md flex flex-col md:flex-row items-center justify-between gap-6 border border-emerald-800/40">
+      <div className="bg-[#EDE8DE] dark:bg-[#19201D] text-[#1E3A2B] dark:text-[#EAE6DF] rounded-[36px] p-6 sm:p-8 border border-[#DFD8CB] dark:border-[#25302A] shadow-[0_12px_40px_rgba(0,0,0,0.03)] flex flex-col md:flex-row items-center justify-between gap-6 transition-colors">
         <div className="space-y-2 text-center md:text-left">
-          <span className="text-[10px] sm:text-[11px] uppercase font-bold text-amber-300 tracking-wider bg-emerald-800/60 dark:bg-emerald-900/60 px-3 py-1 rounded-full border border-emerald-600/40 inline-block">
+          <span className="text-[10px] sm:text-[11px] uppercase font-bold text-[#B89B72] dark:text-[#C4A97D] tracking-widest bg-[#F5F2EB] dark:bg-[#151B18] px-3 py-1 rounded-full border border-[#DFD8CB] dark:border-[#2A3830] inline-block">
             Examen Quotidien du Comportement • مُحَاسَبَةُ النَّفْسِ
           </span>
-          <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight">Le Baromètre de Douceur</h2>
-          <p className="text-xs sm:text-sm text-emerald-200/90 dark:text-stone-300 max-w-lg leading-relaxed">
+          <h2 className="text-2xl sm:text-3xl font-serif tracking-tight">Le Baromètre de Douceur</h2>
+          <p className="text-xs sm:text-sm text-[#827869] dark:text-[#8E9B93] max-w-lg leading-relaxed">
             « Jugez vos âmes avant d'être jugés. » Mesurez avec sincérité la qualité de vos rapports humains au cours des dernières 24 heures pour acheter la marchandise d'Allah.
           </p>
         </div>
 
-        <div className="flex items-center space-x-5 bg-emerald-900/60 dark:bg-stone-900/80 border border-emerald-500/30 p-5 rounded-2xl backdrop-blur shrink-0">
+        <div className="flex items-center space-x-5 bg-[#F5F2EB] dark:bg-[#151B18] border border-[#DFD8CB] dark:border-[#25302A] p-5 sm:p-6 rounded-[24px] shrink-0">
           <div className="text-center">
-            <div className="text-4xl sm:text-5xl font-extrabold text-amber-300 tracking-tight font-mono">{totalScore}%</div>
-            <span className="text-[10px] text-emerald-200 uppercase font-bold tracking-wider">Indice d'Immunité</span>
+            <div className="text-4xl sm:text-5xl font-extrabold text-[#1E3A2B] dark:text-[#A7D1BA] tracking-tight font-mono">{totalScore}%</div>
+            <span className="text-[10px] text-[#B89B72] dark:text-[#C4A97D] uppercase font-bold tracking-wider">Indice d'Immunité</span>
           </div>
-          <div className="h-14 w-px bg-emerald-700/60" />
-          <div className="text-xs text-emerald-100 dark:text-stone-200 max-w-[140px] leading-snug">
+          <div className="h-14 w-px bg-[#DFD8CB] dark:bg-[#25302A]" />
+          <div className="text-xs text-[#55635C] dark:text-[#A7B5AD] max-w-[140px] leading-snug">
             {totalScore >= 80 
               ? "Excellente douceur. Tu incarnes le vêtement des préservés du Feu." 
               : totalScore >= 60 
@@ -147,13 +147,13 @@ export default function TrackerTab({
 
       {/* CONSEIL SPIRITUEL SUR-MESURE */}
       {totalScore < 100 && (
-        <div className="bg-amber-50/80 dark:bg-amber-950/40 border border-amber-300/80 dark:border-amber-800/60 p-4 rounded-2xl flex items-start space-x-3 text-xs">
-          <Sparkles className="w-5 h-5 text-amber-700 dark:text-amber-400 shrink-0 mt-0.5" />
-          <div className="space-y-0.5">
-            <span className="font-bold text-amber-950 dark:text-amber-200">
+        <div className="bg-[#EDE8DE] dark:bg-[#19201D] border border-[#DFD8CB] dark:border-[#25302A] p-5 rounded-[24px] flex items-start space-x-3 text-xs shadow-[0_8px_30px_rgba(0,0,0,0.02)]">
+          <Sparkles className="w-5 h-5 text-[#B89B72] dark:text-[#C4A97D] shrink-0 mt-0.5" />
+          <div className="space-y-1">
+            <span className="font-bold text-[#1E3A2B] dark:text-[#EAE6DF]">
               Conseil du Sheikh pour ton point d'effort actuel : {lowestPillar.name}
             </span>
-            <p className="text-amber-900/90 dark:text-stone-300 leading-relaxed">
+            <p className="text-[#685F51] dark:text-[#8E9B93] leading-relaxed">
               {lowestPillar.tip}
             </p>
           </div>
@@ -161,12 +161,12 @@ export default function TrackerTab({
       )}
 
       {/* AUTO-EXAMEN DES 4 PILIERS COMPORTEMENTAUX */}
-      <div className="bg-white dark:bg-stone-900 rounded-3xl border border-stone-200 dark:border-stone-800 p-5 sm:p-7 shadow-sm space-y-5 transition-colors">
+      <div className="bg-[#EDE8DE] dark:bg-[#19201D] rounded-[36px] border border-[#DFD8CB] dark:border-[#25302A] p-6 sm:p-8 shadow-[0_12px_40px_rgba(0,0,0,0.03)] space-y-6 transition-colors">
         <div>
-          <h2 className="font-bold text-stone-900 dark:text-stone-100 text-base">
+          <h2 className="font-serif text-[#1E3A2B] dark:text-[#EAE6DF] text-xl">
             Les 4 Questions de Vérification Comportementale
           </h2>
-          <p className="text-xs text-stone-500 dark:text-stone-400">
+          <p className="text-xs text-[#827869] dark:text-[#8E9B93] mt-0.5">
             Positionnez votre curseur en toute lucidité face à Allah :
           </p>
         </div>
@@ -179,30 +179,30 @@ export default function TrackerTab({
             return (
               <div 
                 key={pillar.id} 
-                className="bg-stone-50/80 dark:bg-stone-800/50 p-4 sm:p-5 rounded-2xl border border-stone-200/70 dark:border-stone-800 space-y-3"
+                className="bg-[#F5F2EB] dark:bg-[#151B18] p-5 sm:p-6 rounded-[24px] border border-[#DFD8CB]/80 dark:border-[#25302A] space-y-3.5"
               >
                 {/* En-tête */}
                 <div className="flex justify-between items-center">
                   <div>
                     <div className="flex items-center space-x-2">
-                      <span className="font-bold text-stone-900 dark:text-stone-100 text-sm sm:text-base">
+                      <span className="font-serif font-bold text-[#1E3A2B] dark:text-[#EAE6DF] text-sm sm:text-base">
                         {pillar.nameFr}
                       </span>
-                      <span className="font-serif text-emerald-800 dark:text-amber-300 text-base font-bold dir-rtl">
+                      <span className="font-serif text-[#B89B72] dark:text-[#C4A97D] text-base font-bold dir-rtl">
                         {pillar.nameAr}
                       </span>
                     </div>
-                    <p className="text-xs text-stone-600 dark:text-stone-300 font-medium mt-0.5">
+                    <p className="text-xs text-[#55635C] dark:text-[#A7B5AD] font-medium mt-0.5">
                       {inquiry.question}
                     </p>
                   </div>
-                  <span className="text-sm font-extrabold text-emerald-900 dark:text-emerald-300 bg-emerald-100/80 dark:bg-emerald-950/80 px-3 py-1 rounded-full border border-emerald-300/50 dark:border-emerald-700/50 shrink-0">
+                  <span className="text-sm font-extrabold text-[#1E3A2B] dark:text-[#A7D1BA] bg-[#EDE8DE] dark:bg-[#1E2723] px-3.5 py-1 rounded-full border border-[#DFD8CB] dark:border-[#2A3830] shrink-0 font-mono">
                     {currentRating} / 5
                   </span>
                 </div>
 
                 {/* Boutons d'état rapide */}
-                <div className="grid grid-cols-3 gap-1.5 pt-1">
+                <div className="grid grid-cols-3 gap-2 pt-1">
                   {inquiry.options.map((opt) => {
                     const isSelected = currentRating === opt.val;
                     return (
@@ -212,10 +212,10 @@ export default function TrackerTab({
                           triggerHaptic(20);
                           setRatings({ ...ratings, [pillar.id]: opt.val });
                         }}
-                        className={`p-2 rounded-xl text-[10px] sm:text-[11px] font-semibold transition-all text-center leading-tight ${
+                        className={`p-2.5 rounded-full text-[10px] sm:text-[11px] font-semibold transition-all text-center leading-tight ${
                           isSelected
-                            ? 'bg-emerald-800 text-white shadow-sm font-bold'
-                            : 'bg-white dark:bg-stone-800 text-stone-600 dark:text-stone-300 border border-stone-200 dark:border-stone-700 hover:border-emerald-400'
+                            ? 'bg-[#1E3A2B] dark:bg-[#B89B72] text-[#F5F2EB] dark:text-[#111614] shadow-sm'
+                            : 'bg-[#EDE8DE]/70 dark:bg-[#19201D] text-[#685F51] dark:text-[#8E9B93] border border-[#DFD8CB] dark:border-[#25302A] hover:border-[#B89B72]'
                         }`}
                       >
                         {opt.label}
@@ -225,7 +225,7 @@ export default function TrackerTab({
                 </div>
 
                 {/* Curseur précis */}
-                <div className="space-y-1 pt-1">
+                <div className="space-y-1.5 pt-1">
                   <input 
                     type="range" 
                     min="1" 
@@ -236,9 +236,9 @@ export default function TrackerTab({
                       triggerHaptic(15);
                       setRatings({ ...ratings, [pillar.id]: parseInt(e.target.value) });
                     }}
-                    className="w-full accent-emerald-700 dark:accent-amber-400 cursor-pointer h-2 bg-stone-200 dark:bg-stone-700 rounded-lg"
+                    className="w-full accent-[#1E3A2B] dark:accent-[#B89B72] cursor-pointer h-2 bg-[#DFD8CB] dark:bg-[#25302A] rounded-lg"
                   />
-                  <div className="flex justify-between text-[10px] text-stone-400 font-medium px-0.5">
+                  <div className="flex justify-between text-[10px] text-[#A39989] dark:text-[#6E7B74] font-medium px-0.5">
                     <span>1 • Glissade</span>
                     <span>3 • Équilibré</span>
                     <span>5 • Pleine Mansuétude</span>
@@ -250,9 +250,9 @@ export default function TrackerTab({
         </div>
 
         {/* Note d'introspection & Journal personnel */}
-        <div className="space-y-3 pt-2 border-t border-stone-100 dark:border-stone-800">
+        <div className="space-y-3 pt-3 border-t border-[#DFD8CB]/80 dark:border-[#25302A]">
           <div className="flex flex-wrap items-center justify-between gap-2">
-            <label className="text-xs font-bold text-stone-700 dark:text-stone-300 uppercase tracking-wide">
+            <label className="text-xs font-bold text-[#1E3A2B] dark:text-[#EAE6DF] uppercase tracking-wider">
               Note d'Introspection du Jour :
             </label>
             <div className="flex space-x-1.5 text-xs">
@@ -263,10 +263,10 @@ export default function TrackerTab({
                     triggerHaptic(15);
                     setJournalTag(tag);
                   }}
-                  className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition-colors ${
+                  className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${
                     journalTag === tag 
-                      ? 'bg-emerald-800 dark:bg-amber-400 text-white dark:text-stone-950' 
-                      : 'bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-300 hover:bg-stone-200 dark:hover:bg-stone-700'
+                      ? 'bg-[#1E3A2B] dark:bg-[#B89B72] text-[#F5F2EB] dark:text-[#111614]' 
+                      : 'bg-[#F5F2EB] dark:bg-[#151B18] text-[#827869] dark:text-[#8E9B93] border border-[#DFD8CB]/80 dark:border-[#25302A]'
                   }`}
                 >
                   {tag}
@@ -280,20 +280,20 @@ export default function TrackerTab({
             onChange={(e) => setJournalNote(e.target.value)}
             placeholder="Ex : 'Face à une remarque blessante au travail aujourd'hui, j'ai différé ma réponse de 10 secondes et appliqué la douceur au lieu de piquer en retour...'"
             rows={3}
-            className="w-full p-3.5 rounded-2xl border border-stone-300 dark:border-stone-700 focus:outline-none focus:ring-2 focus:ring-emerald-700 dark:focus:ring-amber-400 text-xs sm:text-sm text-stone-800 dark:text-stone-100 bg-white dark:bg-stone-800/70"
+            className="w-full p-4 rounded-[20px] border border-[#DFD8CB] dark:border-[#2A3830] focus:outline-none focus:ring-2 focus:ring-[#B89B72]/40 text-xs sm:text-sm text-[#1E3A2B] dark:text-[#EAE6DF] bg-[#F5F2EB] dark:bg-[#151B18] placeholder-[#A39989]"
           />
 
-          <div className="flex justify-between items-center pt-1">
-            <span className="text-[11px] text-stone-400 dark:text-stone-500">
+          <div className="flex flex-wrap justify-between items-center gap-2 pt-1">
+            <span className="text-[11px] text-[#A39989] dark:text-[#6E7B74]">
               💾 Sauvegarde automatique dans votre appareil
             </span>
             <button
               onClick={handleSaveAssessment}
               disabled={!journalNote.trim()}
-              className={`px-6 py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider transition-all shadow-sm flex items-center space-x-2 ${
+              className={`px-6 py-2.5 rounded-full font-bold text-xs uppercase tracking-wider transition-all shadow-sm flex items-center space-x-2 ${
                 journalNote.trim() 
-                  ? 'bg-emerald-800 hover:bg-emerald-900 dark:bg-amber-400 dark:hover:bg-amber-300 text-white dark:text-stone-950 cursor-pointer active:scale-95' 
-                  : 'bg-stone-200 dark:bg-stone-800 text-stone-400 dark:text-stone-600 cursor-not-allowed'
+                  ? 'bg-[#1E3A2B] hover:bg-[#2A4C3A] dark:bg-[#B89B72] dark:hover:bg-[#C4A97D] text-[#F5F2EB] dark:text-[#111614] cursor-pointer active:scale-95' 
+                  : 'bg-[#DFD8CB]/60 dark:bg-[#151B18] text-[#A39989] dark:text-[#55635C] cursor-not-allowed border border-[#DFD8CB] dark:border-[#25302A]'
               }`}
             >
               <CheckCircle className="w-4 h-4" />
@@ -304,10 +304,10 @@ export default function TrackerTab({
       </div>
 
       {/* HISTORIQUE DES RÉFLEXIONS & OUTILS D'EXPORTATION */}
-      <div className="bg-white dark:bg-stone-900 rounded-3xl border border-stone-200 dark:border-stone-800 p-5 sm:p-7 shadow-sm space-y-4 transition-colors">
-        <div className="flex flex-wrap items-center justify-between gap-2 border-b border-stone-100 dark:border-stone-800 pb-3">
-          <h3 className="font-bold text-stone-900 dark:text-stone-100 text-sm sm:text-base flex items-center space-x-2">
-            <MessageSquare className="w-4 h-4 text-emerald-700 dark:text-amber-400" />
+      <div className="bg-[#EDE8DE] dark:bg-[#19201D] rounded-[36px] border border-[#DFD8CB] dark:border-[#25302A] p-6 sm:p-8 shadow-[0_12px_40px_rgba(0,0,0,0.03)] space-y-4 transition-colors">
+        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#DFD8CB]/80 dark:border-[#25302A] pb-3">
+          <h3 className="font-serif text-[#1E3A2B] dark:text-[#EAE6DF] text-base flex items-center space-x-2">
+            <MessageSquare className="w-4 h-4 text-[#B89B72] dark:text-[#C4A97D]" />
             <span>Historique de Vos Notes de Conscience</span>
           </h3>
           
@@ -318,7 +318,7 @@ export default function TrackerTab({
                 exportJournalAsTxt(savedEntries);
               }}
               disabled={savedEntries.length === 0}
-              className="flex items-center space-x-1.5 text-xs text-stone-600 dark:text-stone-300 hover:text-emerald-800 dark:hover:text-amber-300 bg-stone-100 dark:bg-stone-800 px-3 py-1.5 rounded-xl transition-colors disabled:opacity-40"
+              className="flex items-center space-x-1.5 text-xs text-[#827869] dark:text-[#8E9B93] hover:text-[#1E3A2B] dark:hover:text-[#EAE6DF] bg-[#F5F2EB] dark:bg-[#151B18] border border-[#DFD8CB] dark:border-[#25302A] px-3.5 py-1.5 rounded-full transition-colors disabled:opacity-40"
               title="Télécharger le carnet en fichier texte"
             >
               <FileText className="w-3.5 h-3.5" />
@@ -330,7 +330,7 @@ export default function TrackerTab({
                 triggerHaptic(25);
                 exportAllDataAsJson({ ratings, savedEntries, totalScore, exportedAt: new Date().toISOString() });
               }}
-              className="flex items-center space-x-1.5 text-xs text-stone-600 dark:text-stone-300 hover:text-emerald-800 dark:hover:text-amber-300 bg-stone-100 dark:bg-stone-800 px-3 py-1.5 rounded-xl transition-colors"
+              className="flex items-center space-x-1.5 text-xs text-[#827869] dark:text-[#8E9B93] hover:text-[#1E3A2B] dark:hover:text-[#EAE6DF] bg-[#F5F2EB] dark:bg-[#151B18] border border-[#DFD8CB] dark:border-[#25302A] px-3.5 py-1.5 rounded-full transition-colors"
               title="Exporter les données complètes (JSON)"
             >
               <Download className="w-3.5 h-3.5" />
@@ -340,42 +340,42 @@ export default function TrackerTab({
         </div>
 
         {savedEntries.length === 0 ? (
-          <p className="text-xs text-stone-400 dark:text-stone-500 italic text-center py-6">
+          <p className="text-xs text-[#827869] dark:text-[#8E9B93] italic text-center py-6">
             Aucune note pour l'instant. Consignez votre première auto-évaluation ci-dessus !
           </p>
         ) : (
           <div className="space-y-3">
             {savedEntries.map((entry) => (
-              <div key={entry.id} className="p-4 bg-stone-50 dark:bg-stone-800/50 border-l-4 border-emerald-700 dark:border-amber-400 rounded-r-2xl space-y-2 text-xs transition-all hover:bg-stone-100/80 dark:hover:bg-stone-800">
-                <div className="flex justify-between items-center text-stone-500 dark:text-stone-400 font-medium">
+              <div key={entry.id} className="p-4 sm:p-5 bg-[#F5F2EB] dark:bg-[#151B18] border-l-4 border-[#1E3A2B] dark:border-[#B89B72] rounded-r-[24px] space-y-2 text-xs transition-all border-y border-r border-[#DFD8CB]/80 dark:border-[#25302A]">
+                <div className="flex justify-between items-center text-[#827869] dark:text-[#8E9B93] font-medium">
                   <div className="flex items-center space-x-2">
-                    <span className="font-bold text-stone-700 dark:text-stone-300">{entry.date}</span>
-                    <span className="bg-stone-200 dark:bg-stone-700 text-stone-700 dark:text-stone-200 px-2 py-0.5 rounded text-[10px] font-semibold">
+                    <span className="font-bold text-[#1E3A2B] dark:text-[#EAE6DF]">{entry.date}</span>
+                    <span className="bg-[#EDE8DE] dark:bg-[#1E2723] text-[#1E3A2B] dark:text-[#A7D1BA] px-2.5 py-0.5 rounded-full text-[10px] font-semibold border border-[#DFD8CB] dark:border-[#2A3830]">
                       {entry.tag}
                     </span>
                   </div>
                   
                   <div className="flex items-center space-x-2">
-                    <span className="bg-emerald-100 dark:bg-emerald-950 text-emerald-900 dark:text-emerald-300 px-2 py-0.5 rounded-full font-extrabold text-[11px]">
+                    <span className="bg-[#EDE8DE] dark:bg-[#1E2723] text-[#1E3A2B] dark:text-[#A7D1BA] px-2.5 py-0.5 rounded-full font-extrabold text-[11px] font-mono border border-[#DFD8CB] dark:border-[#2A3830]">
                       {entry.score}% d'immunité
                     </span>
                     <button
                       onClick={() => handleShareEntry(entry)}
-                      className="text-stone-400 hover:text-emerald-700 p-1"
+                      className="text-[#827869] hover:text-[#1E3A2B] dark:hover:text-[#EAE6DF] p-1"
                       title="Partager cette réflexion"
                     >
                       <Share2 className="w-3.5 h-3.5" />
                     </button>
                     <button
                       onClick={() => handleDeleteEntry(entry.id)}
-                      className="text-stone-400 hover:text-rose-600 p-1"
+                      className="text-[#827869] hover:text-rose-600 p-1"
                       title="Supprimer cette note"
                     >
                       <Trash2 className="w-3.5 h-3.5" />
                     </button>
                   </div>
                 </div>
-                <p className="text-stone-800 dark:text-stone-200 text-xs sm:text-sm leading-relaxed italic">
+                <p className="text-[#3F4843] dark:text-[#C5D8CD] text-xs sm:text-sm leading-relaxed italic">
                   « {entry.note} »
                 </p>
               </div>

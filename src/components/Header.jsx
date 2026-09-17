@@ -1,17 +1,16 @@
 import React from 'react';
 import { 
-  ShieldCheck, 
   Volume2, 
   VolumeX, 
-  Sun, 
   Moon, 
-  Wind, 
-  BookOpen, 
-  Sparkles, 
-  Heart, 
-  Compass, 
+  Sun, 
+  Bell, 
+  Wind,
   Feather,
-  Bell
+  BookOpen,
+  Sparkles,
+  Heart,
+  Compass
 } from 'lucide-react';
 import { triggerHaptic } from '../utils/audio';
 
@@ -27,139 +26,84 @@ export default function Header({
   notifEnabled
 }) {
   return (
-    <header className="bg-gradient-to-r from-emerald-950 via-emerald-900 to-teal-950 dark:from-stone-950 dark:via-emerald-950 dark:to-stone-950 text-white shadow-md sticky top-0 z-40 border-b border-emerald-800/70 dark:border-emerald-900/50 transition-colors pt-[env(safe-area-inset-top,0px)]">
-      <div className="max-w-5xl mx-auto px-3 sm:px-4 py-2 sm:py-3 flex items-center justify-between">
+    <header className="sticky top-0 z-40 bg-[#F5F2EB]/90 dark:bg-[#111614]/90 backdrop-blur-md border-b border-[#DFD8CB]/50 dark:border-[#242E29]/60 transition-colors pt-[env(safe-area-inset-top,0px)]">
+      <div className="max-w-md mx-auto px-4 py-3 flex items-center justify-between">
         
-        {/* Logo & Titre */}
-        <div className="flex items-center space-x-2.5">
-          <img 
-            src="/hayyin/logo.svg" 
-            alt="Logo HAYYIN" 
-            className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl shadow-md border border-amber-400/30 shrink-0" 
-          />
-          <div>
-            <div className="flex items-center space-x-1.5">
-              <span className="font-extrabold text-base sm:text-lg tracking-tight">HAYYIN</span>
-              <span className="font-serif text-amber-300 text-sm font-bold dir-rtl">هَيِّن</span>
-            </div>
-            <p className="text-[10px] sm:text-[11px] text-emerald-300/90 truncate max-w-[150px] sm:max-w-none leading-none">
-              Préservé du Feu
-            </p>
-          </div>
-        </div>
-
-        {/* Actions rapides */}
-        <div className="flex items-center space-x-1 sm:space-x-1.5">
-          
-          {/* Bouton Rappels Quotidiens (Cloche) */}
-          <button
-            onClick={() => {
-              triggerHaptic(20);
-              onOpenNotifications();
-            }}
-            title="Configurer les rappels de paix"
-            className="p-1.5 sm:p-2 rounded-xl bg-emerald-800/50 hover:bg-emerald-800 text-emerald-200 border border-emerald-700/50 transition-colors active:scale-95 relative"
-            aria-label="Rappels quotidiens"
-          >
-            <Bell className="w-4 h-4" />
-            {notifEnabled && (
-              <span className="absolute top-1 right-1 w-2 h-2 bg-amber-400 rounded-full shadow-sm shadow-amber-400/80 animate-pulse" />
-            )}
-          </button>
-
-          {/* Bouton d'urgence Anti-Colère Barakallahu Feek */}
-          <button
-            onClick={() => {
-              triggerHaptic(40);
-              onOpenBarakallahu();
-            }}
-            title="Urgence Colère : Invocation d'Ibn 'Awn"
-            className="flex items-center space-x-1.5 bg-gradient-to-r from-amber-500/20 to-amber-600/20 hover:from-amber-500/30 hover:to-amber-600/30 text-amber-200 border border-amber-400/40 px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-semibold transition-all active:scale-95 shadow-sm"
-          >
-            <Wind className="w-3.5 h-3.5 text-amber-300 shrink-0" />
-            <span className="text-xs">Anti-Colère</span>
-          </button>
-
-          {/* Toggle Son */}
+        {/* Côté Gauche : Contrôle Audio Minimaliste Wireframe */}
+        <div className="flex items-center space-x-2">
           <button
             onClick={() => {
               triggerHaptic(20);
               setSoundEnabled(!soundEnabled);
             }}
-            title={soundEnabled ? "Couper le son" : "Activer le son"}
-            className="p-1.5 sm:p-2 rounded-xl bg-emerald-800/50 hover:bg-emerald-800 text-emerald-200 border border-emerald-700/50 transition-colors active:scale-95"
+            title={soundEnabled ? "Couper l'ambiance sonore" : "Activer l'ambiance sonore"}
+            className="p-2 rounded-full text-[#1E3A2B]/70 dark:text-[#EDE8DE]/70 hover:text-[#1E3A2B] dark:hover:text-white transition-colors"
             aria-label="Basculer le son"
           >
-            {soundEnabled ? <Volume2 className="w-4 h-4" /> : <VolumeX className="w-4 h-4 text-stone-400" />}
+            {soundEnabled ? (
+              <Volume2 className="w-5 h-5" strokeWidth={1.4} />
+            ) : (
+              <VolumeX className="w-5 h-5 opacity-40" strokeWidth={1.4} />
+            )}
           </button>
 
-          {/* Toggle Dark Mode */}
+          <button
+            onClick={() => {
+              triggerHaptic(20);
+              onOpenNotifications();
+            }}
+            title="Rappels de douceur"
+            className="p-2 rounded-full text-[#1E3A2B]/70 dark:text-[#EDE8DE]/70 hover:text-[#1E3A2B] dark:hover:text-white transition-colors relative"
+            aria-label="Rappels quotidiens"
+          >
+            <Bell className="w-4 h-4" strokeWidth={1.4} />
+            {notifEnabled && (
+              <span className="absolute top-2 right-2 w-1.5 h-1.5 bg-[#B89B72] rounded-full" />
+            )}
+          </button>
+        </div>
+
+        {/* Centre : Logo HAYYIN Épuré au Pixel Près */}
+        <div className="flex flex-col items-center justify-center cursor-pointer select-none" onClick={() => setActiveTab('sanctuary')}>
+          <span className="font-serif text-[13px] leading-tight text-[#1E3A2B]/80 dark:text-[#B89B72] dir-rtl font-normal">
+            یا رَحِيمُ
+          </span>
+          <span className="font-sans text-xs font-semibold tracking-[0.28em] text-[#1E3A2B] dark:text-[#EDE8DE] uppercase -mt-0.5">
+            HAYYIN
+          </span>
+        </div>
+
+        {/* Côté Droit : Anti-Colère & Mode Sombre Filaire */}
+        <div className="flex items-center space-x-1.5">
+          <button
+            onClick={() => {
+              triggerHaptic(30);
+              onOpenBarakallahu();
+            }}
+            title="Désarmer la colère"
+            className="text-[10px] uppercase font-bold tracking-wider text-[#1E3A2B] dark:text-[#B89B72] bg-[#EDE8DE] dark:bg-[#19201D] border border-[#DFD8CB]/80 dark:border-[#242E29] px-2.5 py-1 rounded-full hover:bg-[#E5DFD3] dark:hover:bg-[#202925] transition-all"
+          >
+            Anti-Colère
+          </button>
+
           <button
             onClick={() => {
               triggerHaptic(20);
               setDarkMode(!darkMode);
             }}
-            title={darkMode ? "Passer en mode jour" : "Passer en mode nuit"}
-            className="p-1.5 sm:p-2 rounded-xl bg-emerald-800/50 hover:bg-emerald-800 text-emerald-200 border border-emerald-700/50 transition-colors active:scale-95"
+            title={darkMode ? "Mode Jour" : "Mode Nuit"}
+            className="p-2 rounded-full text-[#1E3A2B]/70 dark:text-[#EDE8DE]/70 hover:text-[#1E3A2B] dark:hover:text-white transition-colors"
             aria-label="Basculer le mode sombre"
           >
-            {darkMode ? <Sun className="w-4 h-4 text-amber-300" /> : <Moon className="w-4 h-4 text-emerald-200" />}
+            {darkMode ? (
+              <Sun className="w-5 h-5 text-[#B89B72]" strokeWidth={1.4} />
+            ) : (
+              <Moon className="w-5 h-5" strokeWidth={1.4} />
+            )}
           </button>
         </div>
+
       </div>
-
-      {/* Onglets visibles UNIQUEMENT sur tablette et ordinateur (cachés sur mobile car BottomNav prend le relais) */}
-      <nav className="hidden md:flex max-w-5xl mx-auto px-2 space-x-2 overflow-x-auto text-sm border-t border-emerald-900/60 dark:border-emerald-950 scrollbar-none">
-        <button 
-          onClick={() => setActiveTab('sanctuary')}
-          className={`py-2.5 px-3.5 border-b-2 font-medium flex items-center space-x-2 transition-colors ${
-            activeTab === 'sanctuary' ? 'border-amber-400 text-amber-200 font-semibold bg-emerald-900/40' : 'border-transparent text-emerald-300/80 hover:text-white'
-          }`}
-        >
-          <Feather className="w-4 h-4 text-amber-300" />
-          <span>Sanctuaire de Paix</span>
-        </button>
-
-        <button 
-          onClick={() => setActiveTab('study')}
-          className={`py-2.5 px-3.5 border-b-2 font-medium flex items-center space-x-2 transition-colors ${
-            activeTab === 'study' ? 'border-amber-400 text-amber-200 font-semibold bg-emerald-900/40' : 'border-transparent text-emerald-300/80 hover:text-white'
-          }`}
-        >
-          <BookOpen className="w-4 h-4" />
-          <span>Tafsir & Enseignements</span>
-        </button>
-
-        <button 
-          onClick={() => setActiveTab('tracker')}
-          className={`py-2.5 px-3.5 border-b-2 font-medium flex items-center space-x-2 transition-colors ${
-            activeTab === 'tracker' ? 'border-amber-400 text-amber-200 font-semibold bg-emerald-900/40' : 'border-transparent text-emerald-300/80 hover:text-white'
-          }`}
-        >
-          <Sparkles className="w-4 h-4" />
-          <span>Bilan des 4 Vertus</span>
-        </button>
-
-        <button 
-          onClick={() => setActiveTab('calm')}
-          className={`py-2.5 px-3.5 border-b-2 font-medium flex items-center space-x-2 transition-colors ${
-            activeTab === 'calm' ? 'border-amber-400 text-amber-200 font-semibold bg-emerald-900/40' : 'border-transparent text-emerald-300/80 hover:text-white'
-          }`}
-        >
-          <Heart className="w-4 h-4" />
-          <span>Pause Sérénité</span>
-        </button>
-
-        <button 
-          onClick={() => setActiveTab('scenarios')}
-          className={`py-2.5 px-3.5 border-b-2 font-medium flex items-center space-x-2 transition-colors ${
-            activeTab === 'scenarios' ? 'border-amber-400 text-amber-200 font-semibold bg-emerald-900/40' : 'border-transparent text-emerald-300/80 hover:text-white'
-          }`}
-        >
-          <Compass className="w-4 h-4" />
-          <span>Cas Pratiques</span>
-        </button>
-      </nav>
     </header>
   );
 }

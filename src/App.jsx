@@ -162,7 +162,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-stone-50 dark:bg-stone-950 text-stone-800 dark:text-stone-100 flex flex-col font-sans selection:bg-emerald-100 selection:text-emerald-900 transition-colors antialiased">
+    <div className="min-h-screen bg-[#F5F2EB] dark:bg-[#111614] text-[#1E3A2B] dark:text-[#EAE6DF] flex flex-col font-sans selection:bg-[#E2DACB] selection:text-[#1E3A2B] transition-colors antialiased">
       
       {/* TOAST FLOTTANT IN-APP LORS D'UN RAPPEL */}
       <NotificationToast 
